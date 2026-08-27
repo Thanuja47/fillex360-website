@@ -30,22 +30,37 @@ export default function Spotlight() {
     <section className={`py-24 bg-white border-y border-line ${fontClass}`} id="packages">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold text-orange uppercase tracking-wider bg-orange-soft px-3 py-1 rounded-full border border-orange/20">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-xs font-bold text-orange uppercase tracking-wider bg-orange-soft px-3.5 py-1.5 rounded-full border border-orange/20 inline-block"
+          >
             {t.spotlight.tag}
-          </span>
-          <h2 className="font-display font-black text-3xl sm:text-5xl text-ink mt-3">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-display font-black text-3xl sm:text-5xl text-ink mt-3"
+          >
             {t.spotlight.title}
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Pricing Card Block */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-background border-2 border-dark rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          whileHover={{ y: -4 }}
+          className="bg-background border-2 border-dark rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden group"
         >
+          {/* Subtle Accent Edge Glow */}
+          <div className="absolute top-0 left-0 w-2 h-full bg-orange opacity-80 group-hover:opacity-100 transition-opacity" />
+
           {/* Left Feature List */}
           <div className="lg:col-span-7 space-y-6">
             <div>
@@ -62,8 +77,15 @@ export default function Spotlight() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {features.map((item, idx) => (
-                <div key={idx} className="flex gap-3 items-start">
-                  <div className="w-5 h-5 rounded-full bg-orange text-white flex items-center justify-center text-xs shrink-0 mt-0.5 font-bold">
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + idx * 0.1 }}
+                  className="flex gap-3 items-start"
+                >
+                  <div className="w-5 h-5 rounded-full bg-orange text-white flex items-center justify-center text-xs shrink-0 mt-0.5 font-bold shadow-sm">
                     ✓
                   </div>
                   <div>
@@ -74,13 +96,14 @@ export default function Spotlight() {
                       {item.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
           {/* Right Pricing Box */}
-          <div className="lg:col-span-5 bg-dark text-white rounded-2xl p-8 border border-dark-border text-center flex flex-col justify-between h-full shadow-xl">
+          <div className="lg:col-span-5 bg-dark text-white rounded-2xl p-8 border border-dark-border text-center flex flex-col justify-between h-full shadow-xl relative overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange/20 rounded-full blur-2xl pointer-events-none" />
             <div>
               <span className="text-xs font-bold text-orange uppercase tracking-widest">
                 Fixed Price Investment
@@ -99,12 +122,14 @@ export default function Spotlight() {
             </div>
 
             <div className="space-y-3">
-              <Link
-                href="/contact"
-                className="block w-full py-4 rounded-full bg-orange text-white font-bold text-sm hover:bg-orange-hover transition-all shadow-lg hover:shadow-orange/20 text-center"
-              >
-                {t.spotlight.cta}
-              </Link>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  href="/contact"
+                  className="block w-full py-4 rounded-full bg-orange text-white font-bold text-sm hover:bg-orange-hover transition-all shadow-lg shadow-orange/20 text-center"
+                >
+                  {t.spotlight.cta}
+                </Link>
+              </motion.div>
               <div className="text-[11px] text-slate-400">
                 Average turnaround: 4 to 6 calendar weeks
               </div>

@@ -15,11 +15,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`bg-white border border-line rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-orange/60 hover:shadow-xl transition-all duration-300 shadow-sm group ${fontClass}`}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.12, ease: "easeOut" }}
+      whileHover={{ y: -8, transition: { duration: 0.25 } }}
+      className={`bg-white border border-line rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-orange/60 hover:shadow-2xl hover:shadow-orange/5 transition-all duration-300 shadow-sm group ${fontClass}`}
     >
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
@@ -29,7 +30,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="text-xs text-text-dim font-medium">{project.meta}</span>
         </div>
 
-        <h3 className="font-display font-bold text-2xl text-ink mb-2 group-hover:text-orange transition-colors">
+        <h3 className="font-display font-bold text-2xl text-ink mb-2 group-hover:text-orange transition-colors duration-200">
           {project.name}
         </h3>
 
@@ -38,7 +39,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </p>
 
         {/* Key Metrics Pill Grid */}
-        <div className="grid grid-cols-3 gap-2 bg-panel p-3 rounded-xl border border-line mb-6">
+        <div className="grid grid-cols-3 gap-2 bg-panel p-3 rounded-xl border border-line mb-6 group-hover:border-orange/20 transition-colors">
           {project.metrics.map((m, idx) => (
             <div key={idx} className="text-center">
               <div className="font-display font-bold text-sm text-ink">{m.value}</div>
@@ -62,9 +63,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         <Link
           href={`/work#${project.id}`}
-          className="inline-flex items-center gap-1 text-sm font-bold text-orange hover:text-orange-hover transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-bold text-orange hover:text-orange-hover transition-colors"
         >
-          {t.work.viewSystem} <span className="group-hover:translate-x-1 transition-transform">→</span>
+          {t.work.viewSystem} <span className="group-hover:translate-x-1.5 transition-transform duration-200">→</span>
         </Link>
       </div>
     </motion.div>
