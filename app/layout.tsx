@@ -1,0 +1,76 @@
+import type { Metadata, Viewport } from "next";
+import { Poppins, Inter } from "next/font/google";
+import "./globals.css";
+import Announcement from "@/components/Announcement";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "Fillex360 Solutions — Software, built properly.",
+  description:
+    "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+  metadataBase: new URL("https://fillex360.com"),
+  openGraph: {
+    title: "Fillex360 Solutions — Software, built properly.",
+    description:
+      "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+    url: "https://fillex360.com",
+    siteName: "Fillex360 Solutions",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Fillex360 Solutions",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fillex360 Solutions — Software, built properly.",
+    description:
+      "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+    images: ["/og-image.png"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#16302A",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+      <body className="bg-cream text-ink antialiased min-h-screen flex flex-col justify-between">
+        <div>
+          <Announcement />
+          <Header />
+          <main>{children}</main>
+        </div>
+        <Footer />
+      </body>
+    </html>
+  );
+}
