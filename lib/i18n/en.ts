@@ -126,6 +126,74 @@ export const en = {
       ],
     },
   ],
+  testimonialsSection: {
+    eyebrow: "Client Stories",
+    title: "Trusted by founders, tutors & directors.",
+    desc: "Read how Fillex360 systems streamline operations across Sri Lanka.",
+  },
+  testimonials: [
+    {
+      quote: "OceanCrew completely solved our seafarer STCW cert expiration delays. Embarkation prep dropped from 4 days to a few hours.",
+      author: "Capt. Rohan Perera",
+      role: "Operations Director, Ceylon Maritime Logistics (Colombo)",
+      rating: 5,
+    },
+    {
+      quote: "Managing 800+ tuition students and monthly PayHere fee receipts manually was a nightmare. MathSpark automated the entire flow seamlessly.",
+      author: "Kavinda Fernando",
+      role: "Lead STEM Educator, Colombo",
+      rating: 5,
+    },
+    {
+      quote: "Our OPD queue chaos ended the week MediCore went live. Patients love the SMS tokens and doctors access health records instantly.",
+      author: "Dr. Anusha Silva",
+      role: "Medical Director, Galle Care Clinic",
+      rating: 5,
+    },
+  ],
+  faqSection: {
+    eyebrow: "Frequently Asked Questions",
+    title: "Everything you need to know before starting.",
+    desc: "Have questions about payments, handover, or timelines? We're transparent about every step.",
+  },
+  faqs: [
+    {
+      q: "How does the payment milestone structure work?",
+      a: "We work on a simple 50/50 milestone basis: 50% deposit to commence architecture design, and the remaining 50% only after you test and approve the system on production.",
+    },
+    {
+      q: "Can you integrate local Sri Lankan payment gateways like PayHere or KOKO?",
+      a: "Yes! We specialize in PayHere LKR card checkout, mobile wallet (mCash/EzCash), Internet Banking, and KOKO installment plans, as well as global Stripe integration.",
+    },
+    {
+      q: "What happens after the 30-day free support period ends?",
+      a: "All code, documentation, and handover keys belong entirely to you with zero lock-in. You can manage it internally or opt into our affordable monthly studio maintenance plan.",
+    },
+    {
+      q: "Do I get full access to the source code?",
+      a: "Absolutely. We transfer full ownership of the clean GitHub repository, database schemas, environment keys, and video walkthroughs upon final handover.",
+    },
+    {
+      q: "How fast can my project be delivered?",
+      a: "Portfolios take 1–2 weeks, E-Commerce & Tutor portals 2–4 weeks, and custom enterprise builds 4–6 weeks.",
+    },
+  ],
+  calculatorSection: {
+    eyebrow: "Interactive Estimator",
+    title: "Calculate your instant project estimate.",
+    desc: "Select the modules and features your business needs for a live cost estimate.",
+    estTotal: "Estimated Investment:",
+    bookThisEst: "Book This Specification →",
+  },
+  calculatorOptions: [
+    { id: "base", name: "Core Next.js Web App Foundation", price: 30000, required: true },
+    { id: "payments", name: "Sri Lanka PayHere / Card Gateway Integration", price: 20000 },
+    { id: "admin", name: "Custom Admin Dashboard & User Management", price: 25000 },
+    { id: "auth", name: "Secure User Auth & Portal Logins", price: 15000 },
+    { id: "database", name: "PostgreSQL / Supabase Database Architecture", price: 20000 },
+    { id: "sms", name: "SMS Notification & Alert Dispatcher", price: 15000 },
+    { id: "i18n", name: "Multi-language Support (English & Sinhala)", price: 15000 },
+  ],
   spotlight: {
     tag: "The Full Build",
     title: "One project. Everything your business needs to run online.",
@@ -155,6 +223,7 @@ export const en = {
     messagePh: "What are you building?",
     send: "Send message",
     sent: "Message sent ✓",
+    selectedPackageLabel: "Selected Package / Specification:",
   },
   footer: { copyright: "© 2026 Fillex360 Solutions. Galle, Sri Lanka." },
 };

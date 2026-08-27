@@ -1,18 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-export default function ContactForm() {
+function ContactFormContent() {
   const { t, fontClass } = useLanguage();
+  const searchParams = useSearchParams();
+
+  const pkgParam = searchParams.get("package");
+  const estimateParam = searchParams.get("estimate");
+  const specsParam = searchParams.get("specs");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    selectedPackage: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (pkgParam) {
+      const match = t.packagesList.find((p) => p.id === pkgParam);
+      if (match) {
+        setFormData((prev) => ({ ...prev, selectedPackage: `${match.name} (${match.price})` }));
+      }
+    } else if (estimateParam) {
+      setFormData((prev) => ({
+        ...prev,
+        selectedPackage: `Custom Estimator Build (${estimateParam}) - ${specsParam || ""}`,
+      }));
+    }
+  }, [pkgParam, estimateParam, specsParam, t.packagesList]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,17 +42,25 @@ export default function ContactForm() {
     setErrorMessage("");
 
     try {
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.selectedPackage
+          ? `[SELECTED SPECIFICATION: ${formData.selectedPackage}]\n\n${formData.message}`
+          : formData.message,
+      };
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json();
 
       if (res.ok && data.success) {
         setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", selectedPackage: "" });
       } else {
         setStatus("error");
         setErrorMessage(data.error || "Failed to submit request.");
@@ -68,6 +98,15 @@ export default function ContactForm() {
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
+          {formData.selectedPackage && (
+            <div className="bg-orange-soft p-3.5 rounded-xl border border-orange/30 text-xs">
+              <span className="font-bold text-orange uppercase tracking-wider block mb-1">
+                {t.contact.selectedPackageLabel}
+              </span>
+              <span className="font-bold text-ink">{formData.selectedPackage}</span>
+            </div>
+          )}
+
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
               {t.contact.namePh}
@@ -126,5 +165,13 @@ export default function ContactForm() {
         </form>
       )}
     </div>
+  );
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-xs text-text-dim">Loading form...</div>}>
+      <ContactFormContent />
+    </Suspense>
   );
 }
