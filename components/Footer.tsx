@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <footer className="bg-forest border-t border-forest-soft text-green-text py-16">
+    <footer className={`bg-forest border-t border-forest-soft text-green-text py-16 ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
         {/* Brand Column */}
         <div className="md:col-span-5 space-y-4">
@@ -13,7 +18,7 @@ export default function Footer() {
             High-performance software studio based in Colombo and Galle, Sri Lanka. Building production web systems for education, healthcare, and maritime fleets.
           </p>
           <div className="text-xs text-text-dim/80 pt-2 font-mono">
-            © {new Date().getFullYear()} Fillex360 Solutions. All rights reserved.
+            {t.footer.copyright}
           </div>
         </div>
 
@@ -25,22 +30,22 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-green-text/80">
             <li>
               <Link href="/work" className="hover:text-cream transition-colors">
-                Selected Work
+                {t.nav.work}
               </Link>
             </li>
             <li>
               <Link href="/approach" className="hover:text-cream transition-colors">
-                Our Approach
+                {t.nav.approach}
               </Link>
             </li>
             <li>
               <Link href="/#packages" className="hover:text-cream transition-colors">
-                Full Build Package
+                {t.nav.packages}
               </Link>
             </li>
             <li>
               <Link href="/contact" className="hover:text-cream transition-colors">
-                Contact & Quote
+                {t.nav.contact}
               </Link>
             </li>
           </ul>

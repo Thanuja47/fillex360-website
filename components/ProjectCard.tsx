@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Project } from "@/lib/projects";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,13 +11,15 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const { t, fontClass } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-panel border border-line rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-terracotta/50 transition-all duration-300 shadow-sm hover:shadow-md group"
+      className={`bg-panel border border-line rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-terracotta/50 transition-all duration-300 shadow-sm hover:shadow-md group ${fontClass}`}
     >
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
@@ -61,7 +64,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           href={`/work#${project.id}`}
           className="inline-flex items-center gap-1 text-sm font-semibold text-forest group-hover:text-terracotta transition-colors"
         >
-          View Case Study <span className="group-hover:translate-x-1 transition-transform">→</span>
+          {t.work.viewSystem} <span className="group-hover:translate-x-1 transition-transform">→</span>
         </Link>
       </div>
     </motion.div>

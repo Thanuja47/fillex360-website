@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const features = [
   {
@@ -23,15 +24,17 @@ const features = [
 ];
 
 export default function Spotlight() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <section className="py-20 bg-panel border-y border-line" id="packages">
+    <section className={`py-20 bg-panel border-y border-line ${fontClass}`} id="packages">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-semibold text-terracotta uppercase tracking-wider bg-terracotta-soft px-3 py-1 rounded-full">
-            Transparent Pricing
+            {t.spotlight.tag}
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-3">
-            Single transparent package. No hidden retainer fees.
+            {t.spotlight.title}
           </h2>
         </div>
 
@@ -47,13 +50,13 @@ export default function Spotlight() {
           <div className="lg:col-span-7 space-y-6">
             <div>
               <div className="inline-block text-xs font-bold uppercase tracking-widest text-forest bg-green-text/50 px-3 py-1 rounded-md mb-2">
-                Turnkey Custom Build
+                {t.spotlight.tag}
               </div>
               <h3 className="font-display font-extrabold text-3xl text-ink">
-                "The Full Build" Studio Package
+                {t.spotlight.title}
               </h3>
               <p className="text-text-dim text-sm mt-2">
-                Designed for Sri Lankan mid-market platforms, educational institutes, and logistics providers moving off legacy software.
+                {t.spotlight.desc}
               </p>
             </div>
 
@@ -84,10 +87,10 @@ export default function Spotlight() {
               </span>
               <div className="mt-4 mb-2">
                 <span className="text-sm line-through text-text-dim/80 mr-2 font-medium">
-                  LKR 850,000
+                  {t.spotlight.priceOld}
                 </span>
                 <div className="font-display font-extrabold text-4xl sm:text-5xl text-white tracking-tight mt-1">
-                  LKR 650,000
+                  {t.spotlight.priceNew}
                 </div>
               </div>
               <p className="text-xs text-green-text/70 mb-6">
@@ -100,7 +103,7 @@ export default function Spotlight() {
                 href="/contact"
                 className="block w-full py-4 rounded-full bg-terracotta text-white font-bold text-sm hover:bg-terracotta/90 transition-all shadow-md text-center"
               >
-                Claim your build slot →
+                {t.spotlight.cta}
               </Link>
               <div className="text-[11px] text-text-dim">
                 Average turnaround: 4 to 6 calendar weeks

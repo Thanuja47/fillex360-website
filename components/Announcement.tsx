@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Announcement() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <div className="bg-forest text-green-text px-4 py-2.5 text-center text-xs md:text-sm font-medium border-b border-forest-soft/40 relative z-50">
+    <div className={`bg-forest text-green-text px-4 py-2.5 text-center text-xs md:text-sm font-medium border-b border-forest-soft/40 relative z-50 ${fontClass}`}>
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -12,10 +15,7 @@ export default function Announcement() {
         className="flex items-center justify-center gap-2 max-w-7xl mx-auto"
       >
         <span className="inline-block w-2 h-2 rounded-full bg-terracotta animate-pulse" />
-        <span>
-          Every system we ship is tested with real payments before handover —{" "}
-          <strong className="text-white font-semibold">no exceptions.</strong>
-        </span>
+        <span>{t.announcement}</span>
       </motion.div>
     </div>
   );

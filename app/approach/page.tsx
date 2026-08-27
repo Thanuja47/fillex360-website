@@ -1,9 +1,7 @@
-import Link from "next/link";
+"use client";
 
-export const metadata = {
-  title: "Engineering Approach & Stack — Fillex360 Solutions",
-  description: "Learn about our development principles, zero-bloat standards, and complete tech stack.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const stackItems = [
   { name: "Next.js 14", category: "Core Framework", desc: "App router, SSR, static page optimization." },
@@ -21,47 +19,33 @@ const stackItems = [
 ];
 
 export default function ApproachPage() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <div className="py-16 md:py-24 bg-cream">
+    <div className={`py-16 md:py-24 bg-cream ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6 space-y-20">
         {/* Header */}
         <div className="max-w-3xl space-y-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-terracotta bg-terracotta-soft px-3 py-1 rounded-full">
-            Our Blueprint
+            {t.approach.eyebrow}
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-ink tracking-tight">
-            How we engineer software in Galle.
+            {t.approach.title}
           </h1>
           <p className="text-lg text-text-dim leading-relaxed">
-            We don't ship bloated CMS themes or unmaintained site builders. Every application is custom-coded using modern web standards for speed, security, and long-term durability.
+            {t.approach.desc}
           </p>
         </div>
 
         {/* Detailed 3 Promises */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-panel border border-line p-8 rounded-2xl space-y-4">
-            <span className="font-display font-black text-3xl text-terracotta">01</span>
-            <h3 className="font-display font-bold text-xl text-ink">Handcrafted Codebase</h3>
-            <p className="text-sm text-text-dim leading-relaxed">
-              We structure your codebase clean, modular, and maintainable. Every component is custom-styled with Tailwind CSS tokens and strict TypeScript typings, allowing internal developer teams to take over seamlessly.
-            </p>
-          </div>
-
-          <div className="bg-panel border border-line p-8 rounded-2xl space-y-4">
-            <span className="font-display font-black text-3xl text-terracotta">02</span>
-            <h3 className="font-display font-bold text-xl text-ink">Production Payment Audits</h3>
-            <p className="text-sm text-text-dim leading-relaxed">
-              Before handing over any payment portal (PayHere or Stripe), we execute real live currency transactions in production environments to verify webhook callbacks, database triggers, and customer email receipts.
-            </p>
-          </div>
-
-          <div className="bg-panel border border-line p-8 rounded-2xl space-y-4">
-            <span className="font-display font-black text-3xl text-terracotta">03</span>
-            <h3 className="font-display font-bold text-xl text-ink">Direct Engineering Access</h3>
-            <p className="text-sm text-text-dim leading-relaxed">
-              Communication happens directly with lead developers who write your code. We provide weekly video progress demos, transparent GitHub commits, and immediate technical answers.
-            </p>
-          </div>
+          {t.approach.promises.map((promise, idx) => (
+            <div key={idx} className="bg-panel border border-line p-8 rounded-2xl space-y-4">
+              <span className="font-display font-black text-3xl text-terracotta">0{idx + 1}</span>
+              <h3 className="font-display font-bold text-xl text-ink">{promise.title}</h3>
+              <p className="text-sm text-text-dim leading-relaxed">{promise.desc}</p>
+            </div>
+          ))}
         </div>
 
         {/* Tech Stack Grid */}
@@ -105,7 +89,7 @@ export default function ApproachPage() {
             href="/contact"
             className="inline-flex items-center px-8 py-4 rounded-full bg-forest text-cream font-bold text-sm hover:bg-forest-soft transition-all shadow"
           >
-            Start your project consultation →
+            {t.nav.cta}
           </Link>
         </div>
       </div>

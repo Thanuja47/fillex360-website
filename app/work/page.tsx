@@ -1,29 +1,29 @@
+"use client";
+
 import { projects } from "@/lib/projects";
 import Link from "next/link";
-
-export const metadata = {
-  title: "Selected Work — Fillex360 Solutions",
-  description: "Detailed case studies of software platforms shipped for maritime, edtech, and healthcare clients.",
-};
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function WorkPage() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <div className="py-16 md:py-24 bg-cream">
+    <div className={`py-16 md:py-24 bg-cream ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-3xl mb-16 space-y-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-terracotta bg-terracotta-soft px-3 py-1 rounded-full">
-            Case Studies
+            {t.work.eyebrow}
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-ink tracking-tight">
-            Production systems we've shipped.
+            {t.work.title}
           </h1>
           <p className="text-lg text-text-dim leading-relaxed">
-            Every project below represents a real operational problem solved with custom Next.js engineering, payment integrations, and zero-compromise database architecture.
+            {t.work.desc}
           </p>
         </div>
 
         <div className="space-y-16">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={project.id}
               id={project.id}
@@ -104,7 +104,7 @@ export default function WorkPage() {
                     href="/contact"
                     className="block text-center w-full py-3 rounded-xl bg-forest text-cream font-bold text-sm hover:bg-forest-soft transition-colors"
                   >
-                    Discuss a similar system →
+                    {t.nav.cta}
                   </Link>
                 </div>
               </div>

@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-poppins)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
+        sinhala: ["var(--font-sinhala)", "sans-serif"],
       },
     },
   },

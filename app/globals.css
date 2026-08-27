@@ -13,6 +13,7 @@
   --color-green-text: #D8E6DD;
   --font-display: var(--font-poppins), sans-serif;
   --font-sans: var(--font-inter), sans-serif;
+  --font-sinhala: var(--font-sinhala), sans-serif;
 }
 
 @layer base {

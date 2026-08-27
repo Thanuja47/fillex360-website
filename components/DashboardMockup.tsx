@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function DashboardMockup() {
+  const { t, fontClass } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-forest rounded-2xl p-6 shadow-2xl border border-forest-soft/60 text-green-text relative overflow-hidden"
+      className={`bg-forest rounded-2xl p-6 shadow-2xl border border-forest-soft/60 text-green-text relative overflow-hidden ${fontClass}`}
     >
       {/* Top Header Mockup */}
       <div className="flex items-center justify-between border-b border-forest-soft pb-4 mb-6">
@@ -22,7 +25,7 @@ export default function DashboardMockup() {
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs bg-forest-soft px-2.5 py-1 rounded-full text-cream font-medium">
-            System Live
+            {t.dashboard.live}
           </span>
         </div>
       </div>
@@ -30,7 +33,7 @@ export default function DashboardMockup() {
       {/* Metrics Row */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="bg-forest-soft/40 p-4 rounded-xl border border-forest-soft/50">
-          <div className="text-xs text-text-dim mb-1 font-medium">Monthly Revenue</div>
+          <div className="text-xs text-text-dim mb-1 font-medium">{t.dashboard.onTimePayments}</div>
           <div className="text-xl font-bold font-display text-white">LKR 4,820,000</div>
           <div className="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
             <span>↑ 18.4%</span>
@@ -38,8 +41,8 @@ export default function DashboardMockup() {
           </div>
         </div>
         <div className="bg-forest-soft/40 p-4 rounded-xl border border-forest-soft/50">
-          <div className="text-xs text-text-dim mb-1 font-medium">System Uptime</div>
-          <div className="text-xl font-bold font-display text-white">99.98%</div>
+          <div className="text-xs text-text-dim mb-1 font-medium">{t.dashboard.activeStudents}</div>
+          <div className="text-xl font-bold font-display text-white">10,480+</div>
           <div className="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
             <span>✓ Verified</span>
             <span className="text-text-dim/60">0 downtime alerts</span>

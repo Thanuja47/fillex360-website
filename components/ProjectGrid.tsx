@@ -4,25 +4,31 @@ import Link from "next/link";
 import { projects } from "@/lib/projects";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ProjectGrid() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <section className="py-20 bg-cream" id="work">
+    <section className={`py-20 bg-cream ${fontClass}`} id="work">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <div className="text-xs font-semibold text-terracotta uppercase tracking-wider mb-2">
-              Selected Engagements
+              {t.work.eyebrow}
             </div>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl text-ink">
-              Recently shipped systems.
+              {t.work.title}
             </h2>
+            <p className="text-text-dim text-sm mt-2 max-w-xl">
+              {t.work.desc}
+            </p>
           </div>
           <Link
             href="/work"
             className="mt-4 md:mt-0 inline-flex items-center text-sm font-semibold text-forest hover:text-terracotta transition-colors"
           >
-            View all detailed write-ups →
+            {t.work.viewSystem} →
           </Link>
         </div>
 
@@ -44,10 +50,10 @@ export default function ProjectGrid() {
             </div>
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-terracotta bg-terracotta-soft/20 px-3 py-1 rounded-full border border-terracotta/30">
-                Next Slot Available
+                {t.work.yours.meta}
               </span>
               <h3 className="font-display font-bold text-2xl text-cream mt-4 mb-2">
-                Your system here?
+                {t.work.yours.title}
               </h3>
               <p className="text-green-text/80 text-sm leading-relaxed mb-6">
                 Have a web application, API integration, or legacy system in Sri Lanka that needs a modern overhaul? We deliver in 4-6 weeks with guaranteed performance.
@@ -59,7 +65,7 @@ export default function ProjectGrid() {
                 href="/contact"
                 className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-terracotta text-white font-semibold text-sm hover:bg-terracotta/90 transition-all text-center shadow-md"
               >
-                Reserve your build slot →
+                {t.work.yours.cta} →
               </Link>
             </div>
           </motion.div>

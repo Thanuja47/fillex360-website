@@ -1,28 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const promises = [
-  {
-    num: "01",
-    title: "Handcrafted codebase, zero template bloat",
-    desc: "We write clean Next.js App Router code tailored to your exact operational domain. No fragile page builders, no heavy unnecessary plugins.",
-  },
-  {
-    num: "02",
-    title: "Real payment testing before sign-off",
-    desc: "We run actual live LKR and USD micro-transactions through PayHere and Stripe before presenting the handover keys. Production readiness is non-negotiable.",
-  },
-  {
-    num: "03",
-    title: "Direct developer communication",
-    desc: "No non-technical middle managers or game-of-telephone delays. Speak directly with the engineers in Galle who are architecting your system.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ApproachSection() {
+  const { t, fontClass } = useLanguage();
+
   return (
-    <section className="py-20 bg-cream" id="approach">
+    <section className={`py-20 bg-cream ${fontClass}`} id="approach">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Visual Code-style Block */}
         <motion.div
@@ -42,10 +27,10 @@ export default function ApproachSection() {
               export const studioPromise = &#123;
             </p>
             <p className="pl-4 text-cream">
-              location: <span className="text-emerald-400">"Colombo & Galle, Sri Lanka"</span>,
+              studio: <span className="text-emerald-400">"{t.approach.terminalLine1}"</span>,
             </p>
             <p className="pl-4 text-cream">
-              stack: [<span className="text-emerald-400">"Next.js"</span>, <span className="text-emerald-400">"TypeScript"</span>, <span className="text-emerald-400">"PostgreSQL"</span>],
+              guarantee: <span className="text-emerald-400">"{t.approach.terminalLine2}"</span>,
             </p>
             <p className="pl-4 text-cream">
               paymentGatewaysTested: <span className="text-yellow-400">true</span>,
@@ -68,20 +53,20 @@ export default function ApproachSection() {
         <div className="lg:col-span-7 space-y-8">
           <div>
             <span className="text-xs font-semibold text-terracotta uppercase tracking-wider bg-terracotta-soft px-3 py-1 rounded-full">
-              Our Principles
+              {t.approach.eyebrow}
             </span>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-3">
-              Coded by hand, in Galle & Colombo.
+              {t.approach.title}
             </h2>
             <p className="text-text-dim text-base mt-2 leading-relaxed">
-              We operate as an agile software studio. Here is how we ensure software projects are completed on schedule without technical debt.
+              {t.approach.desc}
             </p>
           </div>
 
           <div className="space-y-6">
-            {promises.map((p, idx) => (
+            {t.approach.promises.map((p, idx) => (
               <motion.div
-                key={p.num}
+                key={idx}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -89,7 +74,7 @@ export default function ApproachSection() {
                 className="flex gap-5 items-start bg-panel p-5 rounded-xl border border-line"
               >
                 <span className="font-display font-black text-2xl text-terracotta shrink-0">
-                  {p.num}
+                  0{idx + 1}
                 </span>
                 <div>
                   <h3 className="font-display font-bold text-lg text-ink mb-1">

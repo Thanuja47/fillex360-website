@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function ContactForm() {
+  const { t, fontClass } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -41,7 +43,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-panel border border-line rounded-2xl p-6 sm:p-8 shadow-lg text-ink">
+    <div className={`bg-panel border border-line rounded-2xl p-6 sm:p-8 shadow-lg text-ink ${fontClass}`}>
       {status === "success" ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -52,14 +54,14 @@ export default function ContactForm() {
             ✓
           </div>
           <h3 className="font-display font-bold text-2xl text-forest">
-            Message received!
+            {t.contact.sent}
           </h3>
           <p className="text-sm text-text-dim max-w-md mx-auto leading-relaxed">
             Thank you for reaching out to Fillex360 Solutions. Our engineering team in Galle will review your project requirements and respond within 24 hours.
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="inline-flex items-center text-xs font-semibold text-terracotta hover:underline pt-2"
+            className="inline-flex items-center text-xs font-semibold text-terracotta hover:underline pt-2 cursor-pointer"
           >
             Send another inquiry →
           </button>
@@ -68,42 +70,42 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
-              Your Name / Company
+              {t.contact.namePh}
             </label>
             <input
               type="text"
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="e.g. Priyantha Silva (Ceylon Freight)"
+              placeholder={t.contact.namePh}
               className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50"
             />
           </div>
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
-              Work Email Address
+              {t.contact.emailPh}
             </label>
             <input
               type="email"
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              placeholder="priyantha@company.lk"
+              placeholder={t.contact.emailPh}
               className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50"
             />
           </div>
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
-              Project Brief / System Goals
+              {t.contact.messagePh}
             </label>
             <textarea
               required
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Tell us about the web application, feature set, or payment integrations you need built..."
+              placeholder={t.contact.messagePh}
               className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50 resize-none"
             />
           </div>
@@ -117,9 +119,9 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full py-4 rounded-xl bg-forest text-cream font-bold text-sm hover:bg-forest-soft disabled:opacity-50 transition-all shadow-md text-center"
+            className="w-full py-4 rounded-xl bg-forest text-cream font-bold text-sm hover:bg-forest-soft disabled:opacity-50 transition-all shadow-md text-center cursor-pointer"
           >
-            {status === "loading" ? "Submitting inquiry..." : "Send project inquiry →"}
+            {status === "loading" ? "Submitting..." : `${t.contact.send} →`}
           </button>
         </form>
       )}

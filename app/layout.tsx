@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Poppins, Inter, Noto_Sans_Sinhala } from "next/font/google";
 import "./globals.css";
 import Announcement from "@/components/Announcement";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,6 +17,13 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const notoSinhala = Noto_Sans_Sinhala({
+  subsets: ["sinhala"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sinhala",
   display: "swap",
 });
 
@@ -62,14 +70,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} ${notoSinhala.variable}`}>
       <body className="bg-cream text-ink antialiased min-h-screen flex flex-col justify-between">
-        <div>
-          <Announcement />
-          <Header />
-          <main>{children}</main>
-        </div>
-        <Footer />
+        <LanguageProvider>
+          <div>
+            <Announcement />
+            <Header />
+            <main>{children}</main>
+          </div>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
