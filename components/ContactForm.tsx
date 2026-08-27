@@ -43,17 +43,17 @@ export default function ContactForm() {
   };
 
   return (
-    <div className={`bg-panel border border-line rounded-2xl p-6 sm:p-8 shadow-lg text-ink ${fontClass}`}>
+    <div className={`bg-white border border-line rounded-2xl p-6 sm:p-8 shadow-2xl text-ink ${fontClass}`}>
       {status === "success" ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-10 space-y-4"
         >
-          <div className="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-2xl mx-auto font-bold">
+          <div className="w-14 h-14 bg-orange/10 text-orange rounded-full flex items-center justify-center text-2xl mx-auto font-bold border border-orange/30">
             ✓
           </div>
-          <h3 className="font-display font-bold text-2xl text-forest">
+          <h3 className="font-display font-bold text-2xl text-ink">
             {t.contact.sent}
           </h3>
           <p className="text-sm text-text-dim max-w-md mx-auto leading-relaxed">
@@ -61,7 +61,7 @@ export default function ContactForm() {
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="inline-flex items-center text-xs font-semibold text-terracotta hover:underline pt-2 cursor-pointer"
+            className="inline-flex items-center text-xs font-bold text-orange hover:underline pt-2 cursor-pointer"
           >
             Send another inquiry →
           </button>
@@ -69,7 +69,7 @@ export default function ContactForm() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
               {t.contact.namePh}
             </label>
             <input
@@ -78,12 +78,12 @@ export default function ContactForm() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder={t.contact.namePh}
-              className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50"
+              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
               {t.contact.emailPh}
             </label>
             <input
@@ -92,12 +92,12 @@ export default function ContactForm() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder={t.contact.emailPh}
-              className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50"
+              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
               {t.contact.messagePh}
             </label>
             <textarea
@@ -106,7 +106,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder={t.contact.messagePh}
-              className="w-full px-4 py-3 rounded-xl bg-cream border border-line focus:outline-none focus:border-forest transition-colors text-sm text-ink placeholder:text-text-dim/50 resize-none"
+              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40 resize-none"
             />
           </div>
 
@@ -119,7 +119,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full py-4 rounded-xl bg-forest text-cream font-bold text-sm hover:bg-forest-soft disabled:opacity-50 transition-all shadow-md text-center cursor-pointer"
+            className="w-full py-4 rounded-xl bg-orange text-white font-bold text-sm hover:bg-orange-hover disabled:opacity-50 transition-all shadow-lg hover:shadow-orange/20 text-center cursor-pointer"
           >
             {status === "loading" ? "Submitting..." : `${t.contact.send} →`}
           </button>

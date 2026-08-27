@@ -11,12 +11,12 @@ export default function Header() {
   const { t, fontClass } = useLanguage();
 
   return (
-    <header className={`sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-line transition-all ${fontClass}`}>
+    <header className={`sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-line transition-all ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="group flex items-center gap-1">
-          <span className="font-display font-extrabold text-2xl tracking-tight text-forest">
-            Fillex360<span className="text-terracotta">.</span>
+          <span className="font-display font-extrabold text-2xl tracking-tight text-ink">
+            Fillex360<span className="text-orange">.</span>
           </span>
         </Link>
 
@@ -24,25 +24,25 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-8">
           <Link
             href="/work"
-            className="text-sm font-medium text-ink/80 hover:text-forest transition-colors"
+            className="text-sm font-medium text-ink/80 hover:text-orange transition-colors"
           >
             {t.nav.work}
           </Link>
           <Link
             href="/approach"
-            className="text-sm font-medium text-ink/80 hover:text-forest transition-colors"
+            className="text-sm font-medium text-ink/80 hover:text-orange transition-colors"
           >
             {t.nav.approach}
           </Link>
           <Link
             href="/#packages"
-            className="text-sm font-medium text-ink/80 hover:text-forest transition-colors"
+            className="text-sm font-medium text-ink/80 hover:text-orange transition-colors"
           >
             {t.nav.packages}
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-medium text-ink/80 hover:text-forest transition-colors"
+            className="text-sm font-medium text-ink/80 hover:text-orange transition-colors"
           >
             {t.nav.contact}
           </Link>
@@ -53,7 +53,7 @@ export default function Header() {
           <LanguageToggle />
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-forest text-cream font-medium text-sm hover:bg-forest-soft transition-all duration-200 shadow-sm hover:shadow"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-orange text-white font-semibold text-sm hover:bg-orange-hover transition-all duration-200 shadow-sm hover:shadow"
           >
             {t.nav.cta}
           </Link>
@@ -64,7 +64,7 @@ export default function Header() {
           <LanguageToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-forest focus:outline-none"
+            className="p-2 text-ink focus:outline-none"
             aria-label="Toggle menu"
           >
             <svg
@@ -100,41 +100,41 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-panel border-b border-line px-6 py-6"
+            className="md:hidden bg-white border-b border-line px-6 py-6"
           >
             <div className="flex flex-col gap-4">
               <Link
                 href="/work"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-ink hover:text-forest py-1"
+                className="text-base font-medium text-ink hover:text-orange py-1"
               >
                 {t.nav.work}
               </Link>
               <Link
                 href="/approach"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-ink hover:text-forest py-1"
+                className="text-base font-medium text-ink hover:text-orange py-1"
               >
                 {t.nav.approach}
               </Link>
               <Link
                 href="/#packages"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-ink hover:text-forest py-1"
+                className="text-base font-medium text-ink hover:text-orange py-1"
               >
                 {t.nav.packages}
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-ink hover:text-forest py-1"
+                className="text-base font-medium text-ink hover:text-orange py-1"
               >
                 {t.nav.contact}
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-forest text-cream font-medium text-sm text-center mt-2 shadow"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-orange text-white font-semibold text-sm text-center mt-2 shadow"
               >
                 {t.nav.cta}
               </Link>

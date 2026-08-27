@@ -22,14 +22,14 @@ export default function ApproachPage() {
   const { t, fontClass } = useLanguage();
 
   return (
-    <div className={`py-16 md:py-24 bg-cream ${fontClass}`}>
+    <div className={`py-16 md:py-24 bg-background ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6 space-y-20">
         {/* Header */}
         <div className="max-w-3xl space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-terracotta bg-terracotta-soft px-3 py-1 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-wider text-orange bg-orange-soft px-3 py-1 rounded-full border border-orange/20">
             {t.approach.eyebrow}
           </span>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-ink tracking-tight">
+          <h1 className="font-display font-black text-4xl sm:text-5xl text-ink tracking-tight">
             {t.approach.title}
           </h1>
           <p className="text-lg text-text-dim leading-relaxed">
@@ -40,8 +40,8 @@ export default function ApproachPage() {
         {/* Detailed 3 Promises */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {t.approach.promises.map((promise, idx) => (
-            <div key={idx} className="bg-panel border border-line p-8 rounded-2xl space-y-4">
-              <span className="font-display font-black text-3xl text-terracotta">0{idx + 1}</span>
+            <div key={idx} className="bg-white border border-line p-8 rounded-2xl space-y-4 shadow-sm">
+              <span className="font-display font-black text-3xl text-orange">0{idx + 1}</span>
               <h3 className="font-display font-bold text-xl text-ink">{promise.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{promise.desc}</p>
             </div>
@@ -49,15 +49,15 @@ export default function ApproachPage() {
         </div>
 
         {/* Tech Stack Grid */}
-        <div className="bg-forest text-cream rounded-3xl p-8 sm:p-12 border border-forest-soft">
+        <div className="bg-dark text-white rounded-3xl p-8 sm:p-12 border border-dark-border shadow-2xl">
           <div className="max-w-2xl mb-12">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange">
               Approved Ecosystem
             </span>
-            <h2 className="font-display font-extrabold text-3xl text-cream mt-2">
+            <h2 className="font-display font-black text-3xl text-white mt-2">
               Our Core Technology Stack
             </h2>
-            <p className="text-sm text-green-text/80 mt-2">
+            <p className="text-sm text-slate-400 mt-2">
               Battle-tested tools we leverage to deliver responsive frontends, secure APIs, and resilient data layers.
             </p>
           </div>
@@ -66,13 +66,13 @@ export default function ApproachPage() {
             {stackItems.map((item) => (
               <div
                 key={item.name}
-                className="bg-forest-soft/40 p-4 rounded-xl border border-forest-soft/60 space-y-1 hover:border-emerald-500/50 transition-colors"
+                className="bg-dark-card p-4 rounded-xl border border-dark-border space-y-1 hover:border-orange/50 transition-colors"
               >
-                <div className="font-display font-bold text-base text-cream">{item.name}</div>
-                <div className="text-[10px] font-semibold uppercase text-emerald-400">
+                <div className="font-display font-bold text-base text-white">{item.name}</div>
+                <div className="text-[10px] font-semibold uppercase text-orange">
                   {item.category}
                 </div>
-                <div className="text-xs text-green-text/70 pt-1 leading-normal">
+                <div className="text-xs text-slate-400 pt-1 leading-normal">
                   {item.desc}
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function ApproachPage() {
           </h3>
           <Link
             href="/contact"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-forest text-cream font-bold text-sm hover:bg-forest-soft transition-all shadow"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-orange text-white font-bold text-sm hover:bg-orange-hover transition-all shadow-lg hover:shadow-orange/20"
           >
             {t.nav.cta}
           </Link>
