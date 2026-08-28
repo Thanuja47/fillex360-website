@@ -2,26 +2,31 @@
 
 import Link from "next/link";
 import { Project } from "@/lib/projects";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import StatCounter from "./StatCounter";
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
+  index?: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const { t, fontClass } = useLanguage();
+const tagContainerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.3 } },
+};
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.12, ease: "easeOut" }}
-      whileHover={{ y: -8, transition: { duration: 0.25 } }}
-      className={`bg-white border border-line rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-orange/60 hover:shadow-2xl hover:shadow-orange/5 transition-all duration-300 shadow-sm group ${fontClass}`}
-    >
+const tagItemVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.25 } },
+};
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  const { t, fontClass } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
+
+  const cardContent = (
+    <div className={`p-6 sm:p-8 flex flex-col justify-between h-full ${fontClass}`}>
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-orange bg-orange-soft px-3 py-1 rounded-full border border-orange/20">
@@ -38,36 +43,88 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {project.summary}
         </p>
 
-        {/* Key Metrics Pill Grid */}
+        {/* Key Metrics Pill Grid with Animated Stat Counters */}
         <div className="grid grid-cols-3 gap-2 bg-panel p-3 rounded-xl border border-line mb-6 group-hover:border-orange/20 transition-colors">
-          {project.metrics.map((m, idx) => (
+          {project.stats.map((stat, idx) => (
             <div key={idx} className="text-center">
-              <div className="font-display font-bold text-sm text-ink">{m.value}</div>
-              <div className="text-[10px] text-text-dim uppercase tracking-tight">{m.label}</div>
+              <div className="font-display font-bold text-sm text-ink">
+                <StatCounter
+                  value={stat.value}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                />
+              </div>
+              <div className="text-[10px] text-text-dim uppercase tracking-tight">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <div className="flex flex-wrap gap-1.5 mb-6">
-          {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="text-xs bg-panel text-ink font-mono px-2.5 py-1 rounded-md border border-line"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        {/* Staggered Tag Chips */}
+        {shouldReduceMotion ? (
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                className="text-xs bg-panel text-ink font-mono px-2.5 py-1 rounded-md border border-line"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            className="flex flex-wrap gap-1.5 mb-6"
+            variants={tagContainerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            {project.stack.map((tech) => (
+              <motion.span
+                key={tech}
+                variants={tagItemVariants}
+                className="text-xs bg-panel text-ink font-mono px-2.5 py-1 rounded-md border border-line"
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </motion.div>
+        )}
 
+        {/* Arrow Nudge Link */}
         <Link
           href={`/work#${project.id}`}
-          className="inline-flex items-center gap-1.5 text-sm font-bold text-orange hover:text-orange-hover transition-colors"
+          className="group/link inline-flex items-center gap-1.5 text-sm font-bold text-orange hover:text-orange-hover transition-colors"
         >
-          {t.work.viewSystem} <span className="group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          {t.work.viewSystem}{" "}
+          <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">
+            →
+          </span>
         </Link>
       </div>
+    </div>
+  );
+
+  if (shouldReduceMotion) {
+    return (
+      <div className="rounded-2xl border border-line bg-white transition-colors hover:border-orange/40 shadow-sm group">
+        {cardContent}
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      whileHover={{ y: -6, boxShadow: "0 20px 40px -20px rgba(255,85,0,0.25)" }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="rounded-2xl border border-line bg-white transition-colors hover:border-orange/40 shadow-sm group h-full"
+    >
+      {cardContent}
     </motion.div>
   );
 }

@@ -1,3 +1,11 @@
+export interface ProjectStat {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+}
+
 export interface Project {
   id: string;
   name: string;
@@ -8,6 +16,7 @@ export interface Project {
   problem: string;
   outcome: string;
   stack: string[];
+  stats: ProjectStat[];
   metrics: { label: string; value: string }[];
   featured?: boolean;
 }
@@ -26,6 +35,11 @@ export const projects: Project[] = [
     outcome:
       "Reduced crew deployment prep time from 4 days to under 4 hours with automated compliance alerts and instant document generation.",
     stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    stats: [
+      { value: 90, prefix: "-", suffix: "%", label: "Deployment time" },
+      { value: 2400, prefix: "", suffix: "+", label: "Active seafarers" },
+      { value: 99.9, decimals: 1, suffix: "%", label: "Compliance rate" },
+    ],
     metrics: [
       { label: "Deployment Time", value: "-90%" },
       { label: "Active Seafarers", value: "2,400+" },
@@ -46,6 +60,11 @@ export const projects: Project[] = [
     outcome:
       "Boosted student practice engagement by 310% and saved tutors 12+ hours per week with automated partial-credit grading algorithms.",
     stack: ["Next.js", "React", "Express", "MongoDB", "PayHere"],
+    stats: [
+      { value: 310, prefix: "+", suffix: "%", label: "Practice hours" },
+      { value: 10000, prefix: "", suffix: "+", label: "Active students" },
+      { value: 12, prefix: "", suffix: " hrs/wk", label: "Grading time saved" },
+    ],
     metrics: [
       { label: "Weekly Practice Hours", value: "+310%" },
       { label: "Active Students", value: "10,000+" },
@@ -66,6 +85,11 @@ export const projects: Project[] = [
     outcome:
       "Streamlined patient flow with automated SMS queue tokens and unified instant EHR access across doctor consultation rooms.",
     stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    stats: [
+      { value: 45, prefix: "-", suffix: " min", label: "Patient wait time" },
+      { value: 1200, prefix: "", suffix: "+", label: "Daily appointments" },
+      { value: 3.2, decimals: 1, suffix: "%", label: "No-show rate" },
+    ],
     metrics: [
       { label: "Patient Wait Time", value: "-45 min" },
       { label: "Daily Appointments", value: "1,200+" },
