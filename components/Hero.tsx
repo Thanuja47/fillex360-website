@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import DashboardMockup from "./DashboardMockup";
+import GridBackground from "./GridBackground";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Hero() {
@@ -10,6 +11,9 @@ export default function Hero() {
 
   return (
     <section className={`py-20 md:py-28 bg-dark text-white overflow-hidden relative ${fontClass}`}>
+      {/* Interactive Cursor Grid Mesh Background */}
+      <GridBackground />
+
       {/* Dynamic Animated Ambient Background Glows */}
       <motion.div
         animate={{
@@ -84,7 +88,7 @@ export default function Hero() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
-                href="/contact"
+                href="/#transform"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-dark-card text-slate-200 border border-dark-border font-semibold text-base hover:bg-dark-border transition-all duration-200 text-center w-full sm:w-auto"
               >
                 {t.hero.cta2}

@@ -16,6 +16,17 @@ export const en = {
     { title: "30-day support promise", sub: "Something's off, we fix it" },
     { title: "Docs included", sub: "So you're never locked in" },
   ],
+  transformSection: {
+    eyebrow: "Creative Transformation",
+    title: "See the difference in design & logic.",
+    desc: "Drag the slider to compare standard outdated templates against Fillex360's bespoke 2026 digital systems.",
+    oldLabel: "Old Clunky Template",
+    newLabel: "Fillex360 Modern Studio System",
+    oldTitle: "Slow, Bloated & Outdated",
+    oldSub: "Heavy plugins, broken mobile layouts, and generic boring typography.",
+    newTitle: "Fast, Bespoke & High-Converting",
+    newSub: "Handcrafted Next.js architecture, 60fps micro-animations, and instant LKR checkout.",
+  },
   comparisonSection: {
     eyebrow: "Why Fillex360",
     title: "How we think & build differently.",
