@@ -15,6 +15,13 @@ export default function DesignTransform() {
     setSliderPos(percentage);
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPos(percentage);
+  };
+
   return (
     <section className={`py-24 bg-dark text-white border-y border-dark-border relative overflow-hidden ${fontClass}`} id="transform">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -51,31 +58,32 @@ export default function DesignTransform() {
         {/* Interactive Comparison Slider Container */}
         <div
           onMouseMove={handleSliderMove}
-          className="relative w-full h-[420px] rounded-3xl overflow-hidden border-2 border-dark-border cursor-ew-resize select-none shadow-2xl"
+          onTouchMove={handleTouchMove}
+          className="relative w-full h-[460px] sm:h-[420px] rounded-3xl overflow-hidden border-2 border-dark-border cursor-ew-resize select-none shadow-2xl"
         >
           {/* Right Side: New Fillex360 Design (Full Width Layer) */}
-          <div className="absolute inset-0 bg-dark-card p-8 sm:p-12 flex flex-col justify-between border border-orange/40">
-            <div className="flex justify-between items-center">
+          <div className="absolute inset-0 bg-dark-card p-6 sm:p-12 flex flex-col justify-between border border-orange/40">
+            <div className="flex justify-between items-center flex-wrap gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-orange bg-orange/20 border border-orange/40 px-3 py-1.5 rounded-full">
                 ✨ {t.transformSection.newLabel}
               </span>
-              <span className="text-xs text-emerald-400 font-mono">100/100 Lighthouse • 60fps</span>
+              <span className="text-xs text-emerald-400 font-mono font-bold">100/100 Lighthouse • 60fps</span>
             </div>
 
-            <div className="space-y-3 max-w-lg">
-              <h3 className="font-display font-black text-3xl sm:text-4xl text-white">
+            <div className="space-y-3 max-w-lg my-auto pt-4">
+              <h3 className="font-display font-black text-2xl sm:text-4xl text-white leading-tight">
                 {t.transformSection.newTitle}
               </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {t.transformSection.newSub}
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <span className="text-xs bg-orange text-white font-bold px-4 py-2 rounded-xl shadow-md">
+            <div className="flex gap-2 flex-wrap pt-2">
+              <span className="text-xs bg-orange text-white font-bold px-3 py-1.5 rounded-xl shadow-md">
                 Fast Checkout
               </span>
-              <span className="text-xs bg-dark-border text-slate-200 font-mono px-4 py-2 rounded-xl">
+              <span className="text-xs bg-dark-border text-slate-200 font-mono px-3 py-1.5 rounded-xl">
                 Next.js App Router
               </span>
             </div>
@@ -83,26 +91,26 @@ export default function DesignTransform() {
 
           {/* Left Side: Old Clunky Template (Clipped Layer) */}
           <div
-            className="absolute inset-0 bg-stone-900 p-8 sm:p-12 flex flex-col justify-between border-r-2 border-red-500/80"
+            className="absolute inset-0 bg-stone-950 p-6 sm:p-12 flex flex-col justify-between border-r-4 border-orange shadow-2xl overflow-hidden"
             style={{ width: `${sliderPos}%` }}
           >
-            <div className="flex justify-between items-center whitespace-nowrap">
-              <span className="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/60 border border-red-800 px-3 py-1.5 rounded-full">
+            <div className="flex justify-between items-center w-[600px]">
+              <span className="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/80 border border-red-800 px-3 py-1.5 rounded-full">
                 ⚠️ {t.transformSection.oldLabel}
               </span>
             </div>
 
-            <div className="space-y-3 max-w-lg whitespace-nowrap">
-              <h3 className="font-display font-bold text-3xl sm:text-4xl text-stone-400 line-through">
+            <div className="space-y-3 w-[600px] my-auto pt-4">
+              <h3 className="font-display font-bold text-2xl sm:text-4xl text-stone-500 line-through leading-tight">
                 {t.transformSection.oldTitle}
               </h3>
-              <p className="text-sm text-stone-500 leading-relaxed truncate">
+              <p className="text-xs sm:text-sm text-stone-500 leading-relaxed max-w-lg">
                 {t.transformSection.oldSub}
               </p>
             </div>
 
-            <div className="flex gap-3 whitespace-nowrap">
-              <span className="text-xs bg-stone-800 text-stone-500 font-medium px-4 py-2 rounded-xl">
+            <div className="flex gap-2 w-[600px] pt-2">
+              <span className="text-xs bg-stone-900 text-stone-600 font-medium px-3 py-1.5 rounded-xl border border-stone-800">
                 Clunky WordPress Theme
               </span>
             </div>
@@ -110,10 +118,10 @@ export default function DesignTransform() {
 
           {/* Drag Handle Divider */}
           <div
-            className="absolute top-0 bottom-0 w-1 bg-orange z-20 flex items-center justify-center pointer-events-none"
+            className="absolute top-0 bottom-0 w-1 bg-orange z-30 flex items-center justify-center pointer-events-none"
             style={{ left: `${sliderPos}%` }}
           >
-            <div className="w-10 h-10 rounded-full bg-orange text-white flex items-center justify-center font-bold text-sm shadow-xl border-2 border-white">
+            <div className="w-11 h-11 rounded-full bg-orange text-white flex items-center justify-center font-black text-base shadow-2xl border-2 border-white ring-4 ring-orange/30">
               ↔
             </div>
           </div>
