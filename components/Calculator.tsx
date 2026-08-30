@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Check, ArrowRight, Calculator as CalcIcon } from "lucide-react";
 
 export default function Calculator() {
   const { t, fontClass } = useLanguage();
@@ -36,8 +37,9 @@ export default function Calculator() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-xs font-bold text-orange uppercase tracking-wider bg-orange/10 px-3.5 py-1.5 rounded-full border border-orange/30 inline-block"
+            className="text-xs font-bold text-orange uppercase tracking-wider bg-orange/10 px-3.5 py-1.5 rounded-full border border-orange/30 inline-flex items-center gap-1.5"
           >
+            <CalcIcon className="w-3.5 h-3.5" />
             {t.calculatorSection.eyebrow}
           </motion.span>
           <motion.h2
@@ -79,11 +81,11 @@ export default function Calculator() {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold transition-colors ${
+                    className={`w-6 h-6 rounded-lg flex items-center justify-center transition-colors ${
                       isChecked ? "bg-orange text-white" : "bg-dark-border text-slate-600"
                     }`}
                   >
-                    ✓
+                    <Check className="w-4 h-4 stroke-[3]" />
                   </div>
                   <span className="font-display font-bold text-sm">{opt.name}</span>
                 </div>
@@ -117,9 +119,10 @@ export default function Calculator() {
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link
               href={`/contact?estimate=LKR+${totalEstimate.toLocaleString()}&specs=${encodeURIComponent(selectedNames)}`}
-              className="inline-block py-4 px-8 rounded-full bg-orange text-white font-bold text-sm hover:bg-orange-hover transition-all shadow-lg shadow-orange/20 text-center"
+              className="inline-flex items-center gap-2 py-4 px-8 rounded-full bg-orange text-white font-extrabold text-sm hover:bg-orange-hover transition-all shadow-lg shadow-orange/20 text-center group"
             >
-              {t.calculatorSection.bookThisEst}
+              <span>{t.calculatorSection.bookThisEst}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </motion.div>
