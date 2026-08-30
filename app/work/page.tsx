@@ -3,24 +3,12 @@
 import { projects } from "@/lib/projects";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import StatCounter from "@/components/StatCounter";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { motion, useReducedMotion, Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function WorkPage() {
   const { t, fontClass } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
-
-  const tagContainerVariants: Variants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.06, delayChildren: 0.2 } },
-  };
-
-  const tagItemVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.85 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.25 } },
-  };
 
   const appleShadow =
     "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06),0_24px_48px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.05),0_16px_32px_rgba(0,0,0,0.09),0_32px_64px_rgba(0,0,0,0.07)]";
@@ -49,112 +37,77 @@ export default function WorkPage() {
                 id={project.id}
                 whileHover={shouldReduceMotion ? undefined : { y: -6 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`bg-white rounded-[28px] p-8 sm:p-12 ${appleShadow} grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-28 transition-all duration-300 ease-out group`}
+                className={`bg-white rounded-[28px] p-8 sm:p-10 ${appleShadow} grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 items-start scroll-mt-28 transition-all duration-300 ease-out`}
               >
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <span className="text-xs font-bold uppercase tracking-wider text-orange bg-orange-soft px-3 py-1 rounded-full border border-orange/20">
-                      {project.tag}
+                {/* LEFT COLUMN */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="bg-orange-soft text-orange text-[11px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full border border-orange/20">
+                      {project.category || project.tag}
                     </span>
-                    <span className="text-xs text-text-dim font-medium">{project.meta}</span>
+                    <span className="text-text-dim text-sm">{project.subtitle || project.meta}</span>
                   </div>
 
-                  <h2 className="font-display font-extrabold text-3xl text-ink group-hover:text-orange transition-colors">
-                    {project.name}
-                  </h2>
+                  <h2 className="font-display font-bold text-3xl text-ink mb-4">{project.name}</h2>
 
-                  <p className="text-base text-text-dim leading-relaxed">
+                  <p className="text-text-dim text-[15px] leading-relaxed mb-6">
                     {project.description}
                   </p>
 
-                  {/* Problem -> Outcome breakdown */}
-                  <div className="space-y-4 pt-2">
-                    <div className="bg-background p-5 rounded-2xl border border-line">
-                      <h3 className="font-display font-bold text-xs text-orange uppercase tracking-wider mb-1">
-                        The Operational Challenge
-                      </h3>
-                      <p className="text-sm text-ink/80 leading-relaxed font-medium">{project.problem}</p>
+                  <div className="bg-panel rounded-2xl p-5 mb-4 border border-line/50">
+                    <div className="text-[11px] font-bold uppercase tracking-wide text-text-dim mb-2">
+                      The operational challenge
                     </div>
+                    <p className="text-ink text-sm leading-relaxed">
+                      {project.challenge || project.problem}
+                    </p>
+                  </div>
 
-                    <div className="bg-dark text-white p-5 rounded-2xl border border-dark-border">
-                      <h3 className="font-display font-bold text-xs text-orange uppercase tracking-wider mb-1">
-                        The Measured Outcome
-                      </h3>
-                      <p className="text-sm text-slate-300 leading-relaxed">{project.outcome}</p>
+                  <div className="bg-ink rounded-2xl p-5 shadow-sm">
+                    <div className="text-[11px] font-bold uppercase tracking-wide text-white/60 mb-2">
+                      The measured outcome
                     </div>
+                    <p className="text-white text-sm leading-relaxed">{project.outcome}</p>
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 bg-background p-6 sm:p-8 rounded-2xl border border-line space-y-6">
-                  <div>
-                    <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-text-dim mb-3">
-                      Verified Performance Metrics
-                    </h4>
-                    <div className="space-y-3">
-                      {project.stats.map((stat, idx) => (
-                        <div
-                          key={idx}
-                          className="flex justify-between items-center bg-white px-4 py-3 rounded-xl border border-line"
-                        >
-                          <span className="text-xs text-text-dim font-medium">{stat.label}</span>
-                          <span className="font-display font-bold text-base text-orange">
-                            <StatCounter
-                              value={stat.value}
-                              prefix={stat.prefix}
-                              suffix={stat.suffix}
-                              decimals={stat.decimals}
-                            />
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                {/* RIGHT COLUMN */}
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wide text-text-dim mb-3">
+                    Verified performance metrics
                   </div>
-
-                  <div>
-                    <h4 className="font-display font-extrabold text-xs uppercase tracking-wider text-text-dim mb-3">
-                      Technology Stack
-                    </h4>
-                    {shouldReduceMotion ? (
-                      <div className="flex flex-wrap gap-2">
-                        {project.stack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs bg-white text-ink font-mono px-3 py-1.5 rounded-lg border border-line"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <motion.div
-                        className="flex flex-wrap gap-2"
-                        variants={tagContainerVariants}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true }}
+                  <div className="flex flex-col gap-2 mb-6">
+                    {project.metrics.map((m) => (
+                      <div
+                        key={m.label}
+                        className="flex items-center justify-between bg-panel rounded-xl px-4 py-3 border border-line/40"
                       >
-                        {project.stack.map((tech) => (
-                          <motion.span
-                            key={tech}
-                            variants={tagItemVariants}
-                            className="text-xs bg-white text-ink font-mono px-3 py-1.5 rounded-lg border border-line"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </motion.div>
-                    )}
+                        <span className="text-sm text-ink font-medium">{m.label}</span>
+                        <span className="font-display font-bold text-orange text-base">{m.value}</span>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="pt-2">
-                    <Link
-                      href="/contact"
-                      className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-orange text-white font-extrabold text-sm hover:bg-orange-hover transition-colors shadow-md group/btn"
-                    >
-                      <span>{t.nav.cta}</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
+                  <div className="text-[11px] font-bold uppercase tracking-wide text-text-dim mb-3">
+                    Technology stack
                   </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-xs text-text-dim bg-panel px-3 py-1.5 rounded-md border border-line/50"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href="/contact"
+                    className="block text-center bg-orange text-white font-extrabold text-sm py-3.5 rounded-full hover:bg-orange-hover transition-colors shadow-md hover:shadow-orange/20"
+                  >
+                    Start a project →
+                  </Link>
                 </div>
               </motion.div>
             </Reveal>
