@@ -1,104 +1,123 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { t, fontClass } = useLanguage();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-line/90 transition-all ${fontClass}`}>
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo with smaller "360" in vibrant orange */}
-        <Link href="/" className="group flex items-center gap-0.5">
-          <span className="font-display font-black text-2xl md:text-3xl tracking-tight text-ink">
-            Fillex<span className="text-orange text-lg md:text-xl font-black align-baseline ml-0.5">360</span>
-            <span className="text-orange font-black text-2xl md:text-3xl">.</span>
-          </span>
-        </Link>
+    <header className={`sticky top-0 z-50 transition-all ${fontClass}`}>
+      {/* Flat White Bar */}
+      <div
+        className={`bg-white flex items-center justify-between px-6 md:px-8 transition-all duration-200 ease-out ${
+          scrolled ? "py-2.5" : "py-4 md:py-5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
+          {/* Logo with smaller "360" in vibrant orange */}
+          <Link href="/" className="group flex items-center gap-0.5">
+            <span className="font-display font-black text-2xl md:text-3xl tracking-tight text-ink">
+              Fillex<span className="text-orange text-lg md:text-xl font-black align-baseline ml-0.5">360</span>
+              <span className="text-orange font-black text-2xl md:text-3xl">.</span>
+            </span>
+          </Link>
 
-        {/* Desktop Nav - High Contrast Bold Typography */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link
-            href="/work"
-            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
-          >
-            {t.nav.work}
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
-          </Link>
-          <Link
-            href="/approach"
-            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
-          >
-            {t.nav.approach}
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
-          </Link>
-          <Link
-            href="/#packages"
-            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
-          >
-            {t.nav.packages}
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
-          </Link>
-          <Link
-            href="/contact"
-            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
-          >
-            {t.nav.contact}
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
-          </Link>
-        </nav>
-
-        {/* Language Toggle & CTA Pill */}
-        <div className="hidden md:flex items-center gap-4">
-          <LanguageToggle />
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+          {/* Desktop Nav - High Contrast Bold Typography */}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link
+              href="/work"
+              className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
+            >
+              {t.nav.work}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
+            </Link>
+            <Link
+              href="/approach"
+              className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
+            >
+              {t.nav.approach}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
+            </Link>
+            <Link
+              href="/#packages"
+              className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
+            >
+              {t.nav.packages}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
+            </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-orange text-white font-black text-sm hover:bg-orange-hover transition-all duration-200 shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30"
+              className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
             >
-              {t.nav.cta}
+              {t.nav.contact}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
             </Link>
-          </motion.div>
-        </div>
+          </nav>
 
-        {/* Mobile Toggle & Menu Trigger */}
-        <div className="flex items-center gap-3 md:hidden">
-          <LanguageToggle />
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-ink focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Language Toggle & CTA Pill */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageToggle />
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-orange text-white font-black text-sm hover:bg-orange-hover transition-all duration-200 shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30"
+              >
+                {t.nav.cta}
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Mobile Toggle & Menu Trigger */}
+          <div className="flex items-center gap-3 md:hidden">
+            <LanguageToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-ink focus:outline-none"
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <X className="w-6 h-6 stroke-[2.2]" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <Menu className="w-6 h-6 stroke-[2.2]" />
               )}
-            </svg>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* SVG Wavy Bottom Edge */}
+      <svg
+        viewBox="0 0 1440 60"
+        preserveAspectRatio="none"
+        className={`block w-full -mt-px transition-all duration-200 ease-out ${
+          scrolled ? "h-[24px]" : "h-[44px]"
+        }`}
+      >
+        <path
+          d="M0,20 C120,60 240,60 360,20 C480,-20 600,-20 720,20 C840,60 960,60 1080,20 C1200,-20 1320,-20 1440,20 L1440,0 L0,0 Z"
+          fill="white"
+        />
+      </svg>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
