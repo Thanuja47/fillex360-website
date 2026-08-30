@@ -107,7 +107,7 @@ export default function Header() {
 
       {/* SVG Wavy Bottom Edge — absolutely positioned so it overhangs below without consuming layout height */}
       <div
-        className={`absolute left-0 right-0 bottom-0 pointer-events-none translate-y-full transition-all duration-200 ease-out`}
+        className={`absolute left-0 right-0 bottom-0 pointer-events-none translate-y-[calc(100%-2px)] transition-all duration-200 ease-out`}
       >
         <svg
           viewBox="0 0 1440 120"
