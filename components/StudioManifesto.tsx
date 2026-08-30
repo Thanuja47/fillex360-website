@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Lightbulb, Gauge, Rocket } from "lucide-react";
 
 export default function StudioManifesto() {
   const { fontClass } = useLanguage();
@@ -42,14 +43,17 @@ export default function StudioManifesto() {
 
           {/* Stylish Punchline Pills */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm sm:text-base font-display font-extrabold">
-            <span className="bg-dark border border-dark-border text-white px-5 py-2.5 rounded-2xl shadow-sm">
-              💡 Think bigger.
+            <span className="bg-dark border border-dark-border text-white px-5 py-2.5 rounded-2xl shadow-sm inline-flex items-center gap-2">
+              <Lightbulb size={16} className="text-orange shrink-0" />
+              Think bigger.
             </span>
-            <span className="bg-dark border border-dark-border text-white px-5 py-2.5 rounded-2xl shadow-sm">
-              ⚡ Build smarter.
+            <span className="bg-dark border border-dark-border text-white px-5 py-2.5 rounded-2xl shadow-sm inline-flex items-center gap-2">
+              <Gauge size={16} className="text-orange shrink-0" />
+              Build smarter.
             </span>
-            <span className="bg-orange text-white px-5 py-2.5 rounded-2xl shadow-md shadow-orange/20">
-              🚀 Grow faster.
+            <span className="bg-orange text-white px-5 py-2.5 rounded-2xl shadow-md shadow-orange/20 inline-flex items-center gap-2">
+              <Rocket size={16} className="text-white shrink-0" />
+              Grow faster.
             </span>
           </div>
         </motion.div>

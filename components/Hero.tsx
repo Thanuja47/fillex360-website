@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import DashboardMockup from "./DashboardMockup";
 import GridBackground from "./GridBackground";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { MapPin, Zap } from "lucide-react";
 
 export default function Hero() {
   const { t, fontClass } = useLanguage();
@@ -88,7 +89,7 @@ export default function Hero() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
-                href="/#transform"
+                href="/#manifesto"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-dark-card text-slate-200 border border-dark-border font-semibold text-base hover:bg-dark-border transition-all duration-200 text-center w-full sm:w-auto"
               >
                 {t.hero.cta2}
@@ -102,12 +103,12 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="pt-6 border-t border-dark-border flex flex-wrap items-center gap-6 text-xs text-slate-400"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-orange font-bold text-base">📍</span>
+            <div className="inline-flex items-center gap-1.5">
+              <MapPin size={16} className="text-orange shrink-0" />
               <span>Based in Colombo & Galle, Sri Lanka</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-orange font-bold text-base">⚡</span>
+            <div className="inline-flex items-center gap-1.5">
+              <Zap size={16} className="text-orange shrink-0" />
               <span>Fixed-timeline delivery</span>
             </div>
           </motion.div>
