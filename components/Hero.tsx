@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import DashboardMockup from "./DashboardMockup";
 import GridBackground from "./GridBackground";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { MapPin, Zap } from "lucide-react";
 
 export default function Hero() {
   const { t, fontClass } = useLanguage();
@@ -38,16 +37,6 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         {/* Left Content */}
         <div className="lg:col-span-7 space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-card border border-dark-border text-orange text-xs font-semibold uppercase tracking-wider shadow-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-orange animate-pulse" />
-            {t.hero.eyebrow}
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,22 +84,6 @@ export default function Hero() {
                 {t.hero.cta2}
               </Link>
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="pt-6 border-t border-dark-border flex flex-wrap items-center gap-6 text-xs text-slate-400"
-          >
-            <div className="inline-flex items-center gap-1.5">
-              <MapPin size={16} className="text-orange shrink-0" />
-              <span>Based in Colombo & Galle, Sri Lanka</span>
-            </div>
-            <div className="inline-flex items-center gap-1.5">
-              <Zap size={16} className="text-orange shrink-0" />
-              <span>Fixed-timeline delivery</span>
-            </div>
           </motion.div>
         </div>
 
