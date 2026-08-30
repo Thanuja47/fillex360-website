@@ -6,7 +6,6 @@ import ProjectGrid from "@/components/ProjectGrid";
 import MindsetComparison from "@/components/MindsetComparison";
 import PackagesGrid from "@/components/PackagesGrid";
 import Calculator from "@/components/Calculator";
-import Testimonials from "@/components/Testimonials";
 import ApproachSection from "@/components/ApproachSection";
 import FAQ from "@/components/FAQ";
 import ContactBlock from "@/components/ContactBlock";
@@ -23,7 +22,6 @@ export default function Home() {
       <MindsetComparison />
       <PackagesGrid />
       <Calculator />
-      <Testimonials />
       <ApproachSection />
       <FAQ />
       <ContactBlock />
