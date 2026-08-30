@@ -61,7 +61,7 @@ export default function DesignTransform() {
           onTouchMove={handleTouchMove}
           className="relative w-full h-[460px] sm:h-[420px] rounded-3xl overflow-hidden border-2 border-dark-border cursor-ew-resize select-none shadow-2xl"
         >
-          {/* Right Side: New Fillex360 Design (Full Width Layer) */}
+          {/* Base Background: Fillex360 Modern Design */}
           <div className="absolute inset-0 bg-dark-card p-6 sm:p-12 flex flex-col justify-between border border-orange/40">
             <div className="flex justify-between items-center flex-wrap gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-orange bg-orange/20 border border-orange/40 px-3 py-1.5 rounded-full">
@@ -89,30 +89,32 @@ export default function DesignTransform() {
             </div>
           </div>
 
-          {/* Left Side: Old Clunky Template (Clipped Layer) */}
+          {/* Overlay Mask: Old Clunky Template */}
           <div
-            className="absolute inset-0 bg-stone-950 p-6 sm:p-12 flex flex-col justify-between border-r-4 border-orange shadow-2xl overflow-hidden"
+            className="absolute inset-y-0 left-0 bg-stone-950 border-r-4 border-orange shadow-2xl overflow-hidden"
             style={{ width: `${sliderPos}%` }}
           >
-            <div className="flex justify-between items-center w-[600px]">
-              <span className="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/80 border border-red-800 px-3 py-1.5 rounded-full">
-                ⚠️ {t.transformSection.oldLabel}
-              </span>
-            </div>
+            <div className="p-6 sm:p-12 flex flex-col justify-between h-full min-w-[700px]">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold uppercase tracking-wider text-red-400 bg-red-950/80 border border-red-800 px-3 py-1.5 rounded-full">
+                  ⚠️ {t.transformSection.oldLabel}
+                </span>
+              </div>
 
-            <div className="space-y-3 w-[600px] my-auto pt-4">
-              <h3 className="font-display font-bold text-2xl sm:text-4xl text-stone-500 line-through leading-tight">
-                {t.transformSection.oldTitle}
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-500 leading-relaxed max-w-lg">
-                {t.transformSection.oldSub}
-              </p>
-            </div>
+              <div className="space-y-3 max-w-lg my-auto pt-4">
+                <h3 className="font-display font-bold text-2xl sm:text-4xl text-stone-500 line-through leading-tight">
+                  {t.transformSection.oldTitle}
+                </h3>
+                <p className="text-xs sm:text-sm text-stone-500 leading-relaxed max-w-lg">
+                  {t.transformSection.oldSub}
+                </p>
+              </div>
 
-            <div className="flex gap-2 w-[600px] pt-2">
-              <span className="text-xs bg-stone-900 text-stone-600 font-medium px-3 py-1.5 rounded-xl border border-stone-800">
-                Clunky WordPress Theme
-              </span>
+              <div className="flex gap-2 pt-2">
+                <span className="text-xs bg-stone-900 text-stone-600 font-medium px-3 py-1.5 rounded-xl border border-stone-800">
+                  Clunky WordPress Theme
+                </span>
+              </div>
             </div>
           </div>
 

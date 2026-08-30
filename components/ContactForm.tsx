@@ -83,7 +83,7 @@ function ContactFormContent() {
           <div className="w-14 h-14 bg-orange/10 text-orange rounded-full flex items-center justify-center text-2xl mx-auto font-bold border border-orange/30">
             ✓
           </div>
-          <h3 className="font-display font-bold text-2xl text-ink">
+          <h3 className="font-display font-black text-2xl text-ink">
             {t.contact.sent}
           </h3>
           <p className="text-sm text-text-dim max-w-md mx-auto leading-relaxed">
@@ -97,7 +97,7 @@ function ContactFormContent() {
           </button>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {formData.selectedPackage && (
             <div className="bg-orange-soft p-3.5 rounded-xl border border-orange/30 text-xs">
               <span className="font-bold text-orange uppercase tracking-wider block mb-1">
@@ -108,7 +108,7 @@ function ContactFormContent() {
           )}
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-black uppercase tracking-wider text-slate-800 mb-2">
               {t.contact.namePh}
             </label>
             <input
@@ -116,13 +116,13 @@ function ContactFormContent() {
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder={t.contact.namePh}
-              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40"
+              placeholder="Enter your full name"
+              className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:border-orange focus:bg-white focus:ring-2 focus:ring-orange/20 transition-all text-sm font-semibold text-slate-900 placeholder:text-slate-500 shadow-sm"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-black uppercase tracking-wider text-slate-800 mb-2">
               {t.contact.emailPh}
             </label>
             <input
@@ -130,13 +130,13 @@ function ContactFormContent() {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              placeholder={t.contact.emailPh}
-              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40"
+              placeholder="you@company.com"
+              className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:border-orange focus:bg-white focus:ring-2 focus:ring-orange/20 transition-all text-sm font-semibold text-slate-900 placeholder:text-slate-500 shadow-sm"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-text-dim mb-2">
+            <label className="block text-xs font-black uppercase tracking-wider text-slate-800 mb-2">
               {t.contact.messagePh}
             </label>
             <textarea
@@ -144,13 +144,13 @@ function ContactFormContent() {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder={t.contact.messagePh}
-              className="w-full px-4 py-3.5 rounded-xl bg-background border border-line focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 transition-all text-sm text-ink placeholder:text-text-dim/40 resize-none"
+              placeholder="Tell us what you're building..."
+              className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:border-orange focus:bg-white focus:ring-2 focus:ring-orange/20 transition-all text-sm font-semibold text-slate-900 placeholder:text-slate-500 resize-none shadow-sm"
             />
           </div>
 
           {status === "error" && (
-            <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg">
+            <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg font-semibold">
               {errorMessage}
             </div>
           )}
@@ -158,7 +158,7 @@ function ContactFormContent() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full py-4 rounded-xl bg-orange text-white font-bold text-sm hover:bg-orange-hover disabled:opacity-50 transition-all shadow-lg hover:shadow-orange/20 text-center cursor-pointer"
+            className="w-full py-4 rounded-xl bg-orange text-white font-extrabold text-sm hover:bg-orange-hover disabled:opacity-50 transition-all shadow-lg shadow-orange/20 hover:shadow-orange/30 text-center cursor-pointer"
           >
             {status === "loading" ? "Submitting..." : `${t.contact.send} →`}
           </button>

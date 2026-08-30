@@ -11,41 +11,42 @@ export default function Header() {
   const { t, fontClass } = useLanguage();
 
   return (
-    <header className={`sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-line/80 transition-all ${fontClass}`}>
+    <header className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-line/90 transition-all ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo with smaller "360" in vibrant orange */}
         <Link href="/" className="group flex items-center gap-0.5">
-          <span className="font-display font-extrabold text-2xl md:text-3xl tracking-tight text-ink">
+          <span className="font-display font-black text-2xl md:text-3xl tracking-tight text-ink">
             Fillex<span className="text-orange text-lg md:text-xl font-black align-baseline ml-0.5">360</span>
             <span className="text-orange font-black text-2xl md:text-3xl">.</span>
           </span>
         </Link>
 
-        {/* Desktop Nav - High Contrast Modern Links */}
+        {/* Desktop Nav - High Contrast Bold Typography */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
             href="/work"
-            className="text-sm font-semibold text-ink/90 hover:text-orange transition-colors relative py-1 group"
+            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
           >
             {t.nav.work}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
           </Link>
           <Link
             href="/approach"
-            className="text-sm font-semibold text-ink/90 hover:text-orange transition-colors relative py-1 group"
+            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
           >
             {t.nav.approach}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
           </Link>
           <Link
             href="/#packages"
-            className="text-sm font-semibold text-ink/90 hover:text-orange transition-colors relative py-1 group"
+            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
           >
             {t.nav.packages}
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-semibold text-ink/90 hover:text-orange transition-colors relative py-1 group"
+            className="font-display font-extrabold text-base tracking-wide text-ink hover:text-orange transition-colors relative py-1 group"
           >
             {t.nav.contact}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange transition-all duration-200 group-hover:w-full" />
@@ -58,7 +59,7 @@ export default function Header() {
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-orange text-white font-bold text-sm hover:bg-orange-hover transition-all duration-200 shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-orange text-white font-black text-sm hover:bg-orange-hover transition-all duration-200 shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30"
             >
               {t.nav.cta}
             </Link>
@@ -112,35 +113,35 @@ export default function Header() {
               <Link
                 href="/work"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-ink hover:text-orange py-1"
+                className="font-display font-extrabold text-lg text-ink hover:text-orange py-1"
               >
                 {t.nav.work}
               </Link>
               <Link
                 href="/approach"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-ink hover:text-orange py-1"
+                className="font-display font-extrabold text-lg text-ink hover:text-orange py-1"
               >
                 {t.nav.approach}
               </Link>
               <Link
                 href="/#packages"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-ink hover:text-orange py-1"
+                className="font-display font-extrabold text-lg text-ink hover:text-orange py-1"
               >
                 {t.nav.packages}
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-bold text-ink hover:text-orange py-1"
+                className="font-display font-extrabold text-lg text-ink hover:text-orange py-1"
               >
                 {t.nav.contact}
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-orange text-white font-bold text-sm text-center mt-2 shadow-md shadow-orange/20"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-orange text-white font-extrabold text-sm text-center mt-2 shadow-md shadow-orange/20"
               >
                 {t.nav.cta}
               </Link>
