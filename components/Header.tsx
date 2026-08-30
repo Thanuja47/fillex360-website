@@ -26,7 +26,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all overflow-visible ${fontClass}`}>
+    <header className={`sticky top-0 z-50 transition-all overflow-visible drop-shadow-[0_8px_16px_rgba(0,0,0,0.08)] ${fontClass}`}>
       {/* Flat White Bar */}
       <div
         className={`bg-white flex items-center justify-between px-6 md:px-8 transition-all duration-200 ease-out ${
