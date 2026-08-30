@@ -2,12 +2,12 @@ export const en = {
   announcement: "Every system we ship is tested with real payments before handover — no exceptions.",
   nav: { work: "Work", approach: "Approach", packages: "Packages", contact: "Contact", cta: "Start a project →" },
   hero: {
-    eyebrow: "Software, delivered well",
-    headlinePre: "Software that makes your business feel ",
-    headlineHighlight: "modern.",
-    sub: "Built and deployed for schools, clinics, and maritime businesses — matched to what your business actually needs, delivered in weeks, with support that doesn't disappear after launch.",
-    cta1: "See our work →",
-    cta2: "Not sure what you need? Ask us",
+    eyebrow: "Engineering Studio • Colombo & Galle",
+    headlinePre: "We design & build digital products with ",
+    headlineHighlight: "unmatched creativity.",
+    sub: "We turn complex business operations into fast, stunning, and bulletproof web applications. Built for founders, institutes, and enterprises who demand 100% quality.",
+    cta1: "Explore Our Systems →",
+    cta2: "Compare Our Approach",
   },
   dashboard: { activeStudents: "Active students", onTimePayments: "On-time payments", live: "Live" },
   stats: [
@@ -16,6 +16,58 @@ export const en = {
     { title: "30-day support promise", sub: "Something's off, we fix it" },
     { title: "Docs included", sub: "So you're never locked in" },
   ],
+  comparisonSection: {
+    eyebrow: "Why Fillex360",
+    title: "How we think & build differently.",
+    desc: "Most agencies use slow WordPress templates and vanish after handover. Here is how Fillex360 delivers 100% creativity and logical superiority.",
+    traditionalTitle: "Traditional Agencies (The Old Way)",
+    fillex360Title: "Fillex360 Engineering (The Modern Way)",
+    points: [
+      {
+        traditional: "Heavy CMS templates, slow loading speeds (3-5s+)",
+        fillex360: "Handcrafted Next.js architecture with instant <1s load times",
+      },
+      {
+        traditional: "Generic, repetitive layouts that look like everyone else",
+        fillex360: "100% custom creative UI/UX tailored to your exact brand identity",
+      },
+      {
+        traditional: "Untested payment setups that fail under real customer traffic",
+        fillex360: "Rigorous live payment & webhook verification before sign-off",
+      },
+      {
+        traditional: "Middlemen managers & radio silence after final payment",
+        fillex360: "Direct communication with lead engineers + 30-day post-launch warranty",
+      },
+    ],
+  },
+  qualitySection: {
+    eyebrow: "Engineering Standard",
+    title: "Built with 100% Quality & Superior Logic.",
+    desc: "We don't cut corners. Every system we deliver adheres to world-class software standards.",
+    pillars: [
+      {
+        icon: "⚡",
+        title: "100/100 Performance",
+        desc: "Optimized asset loading, SSR caching, and instant page transitions for effortless user experience.",
+      },
+      {
+        icon: "🎨",
+        title: "Bespoke Creative Design",
+        desc: "Zero generic themes. Unique color palettes, smooth micro-interactions, and high-converting typography.",
+      },
+      {
+        icon: "🔒",
+        title: "Bulletproof Business Logic",
+        desc: "Rock-solid authentication, data encryption, role access controls, and automated transaction safety.",
+      },
+      {
+        icon: "📱",
+        title: "Fluid Mobile Experience",
+        desc: "Perfect responsive layouts engineered to feel like native mobile apps on every smartphone screen.",
+      },
+    ],
+  },
   work: {
     eyebrow: "Recently shipped",
     title: "Systems doing real work",
@@ -119,7 +171,7 @@ export const en = {
       featured: true,
       features: [
         "Full custom SaaS architecture",
-        "PayHere + Stripe integration",
+        "PayHere + Card integration",
         "Multi-role Admin Dashboard",
         "PostgreSQL / Supabase DB",
         "30-day post-launch guarantee",
@@ -163,7 +215,7 @@ export const en = {
     },
     {
       q: "Can you integrate local Sri Lankan payment gateways like PayHere or KOKO?",
-      a: "Yes! We specialize in PayHere LKR card checkout, mobile wallet (mCash/EzCash), Internet Banking, and KOKO installment plans, as well as global Stripe integration.",
+      a: "Yes! We specialize in PayHere LKR card checkout, mobile wallet (mCash/EzCash), Internet Banking, and KOKO installment plans, hosted seamlessly on Vercel.",
     },
     {
       q: "What happens after the 30-day free support period ends?",

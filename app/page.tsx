@@ -1,6 +1,8 @@
 import Hero from "@/components/Hero";
 import StatsStrip from "@/components/StatsStrip";
+import QualityPillars from "@/components/QualityPillars";
 import ProjectGrid from "@/components/ProjectGrid";
+import MindsetComparison from "@/components/MindsetComparison";
 import PackagesGrid from "@/components/PackagesGrid";
 import Calculator from "@/components/Calculator";
 import Testimonials from "@/components/Testimonials";
@@ -14,7 +16,9 @@ export default function Home() {
     <>
       <Hero />
       <StatsStrip />
+      <QualityPillars />
       <ProjectGrid />
+      <MindsetComparison />
       <PackagesGrid />
       <Calculator />
       <Testimonials />
