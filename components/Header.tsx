@@ -26,7 +26,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all ${fontClass}`}>
+    <header className={`sticky top-0 z-50 transition-all overflow-visible ${fontClass}`}>
       {/* Flat White Bar */}
       <div
         className={`bg-white flex items-center justify-between px-6 md:px-8 transition-all duration-200 ease-out ${
@@ -105,16 +105,16 @@ export default function Header() {
         </div>
       </div>
 
-      {/* SVG Wavy Bottom Edge */}
+      {/* SVG Wavy Bottom Edge — asymmetric, deep left/center dips, flattens to the right */}
       <svg
-        viewBox="0 0 1440 60"
+        viewBox="0 0 1440 120"
         preserveAspectRatio="none"
         className={`block w-full -mt-px transition-all duration-200 ease-out ${
-          scrolled ? "h-[24px]" : "h-[44px]"
+          scrolled ? "h-[50px]" : "h-[90px]"
         }`}
       >
         <path
-          d="M0,20 C120,60 240,60 360,20 C480,-20 600,-20 720,20 C840,60 960,60 1080,20 C1200,-20 1320,-20 1440,20 L1440,0 L0,0 Z"
+          d="M0,10 C90,70 90,90 180,90 C270,90 270,20 360,20 C450,20 450,85 540,85 C630,85 630,30 720,30 C810,30 810,70 900,70 C990,70 990,25 1080,25 C1170,25 1170,15 1260,15 C1330,15 1380,5 1440,5 L1440,0 L0,0 Z"
           fill="white"
         />
       </svg>
