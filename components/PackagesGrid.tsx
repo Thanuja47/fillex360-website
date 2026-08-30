@@ -22,6 +22,9 @@ export default function PackagesGrid() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
+  const appleShadow =
+    "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06),0_24px_48px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.05),0_16px_32px_rgba(0,0,0,0.09),0_32px_64px_rgba(0,0,0,0.07)]";
+
   return (
     <section className={`py-24 bg-white border-y border-line ${fontClass}`} id="packages">
       <div className="max-w-7xl mx-auto px-6">
@@ -57,12 +60,12 @@ export default function PackagesGrid() {
               <Reveal key={pkg.id} delay={i * 0.1}>
                 <motion.div
                   variants={shouldReduceMotion ? undefined : itemVariants}
-                  whileHover={shouldReduceMotion ? undefined : { y: hoverLift, boxShadow: isFeatured ? "0 25px 45px -15px rgba(255,85,0,0.3)" : "0 20px 35px -15px rgba(255,85,0,0.18)" }}
-                  transition={{ duration: 0.25 }}
-                  className={`rounded-3xl p-8 flex flex-col justify-between relative transition-all duration-300 shadow-md h-full ${
+                  whileHover={shouldReduceMotion ? undefined : { y: hoverLift }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className={`rounded-[28px] p-8 flex flex-col justify-between relative transition-all duration-300 ease-out h-full ${
                     isFeatured
-                      ? "bg-dark text-white border-2 border-orange shadow-orange/15"
-                      : "bg-background text-ink border border-line hover:border-orange/60 hover:shadow-2xl"
+                      ? "bg-dark text-white border-2 border-orange shadow-orange/15 hover:shadow-orange/30"
+                      : `bg-white text-ink ${appleShadow}`
                   }`}
                 >
                   {/* Popular / Featured Badge */}

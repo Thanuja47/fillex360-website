@@ -110,9 +110,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     </div>
   );
 
+  const shadowClass =
+    "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06),0_24px_48px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.05),0_16px_32px_rgba(0,0,0,0.09),0_32px_64px_rgba(0,0,0,0.07)]";
+
   if (shouldReduceMotion) {
     return (
-      <div className="rounded-2xl border border-line bg-white transition-colors hover:border-orange/40 shadow-sm group">
+      <div className={`rounded-[28px] bg-white ${shadowClass} group`}>
         {cardContent}
       </div>
     );
@@ -120,9 +123,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <motion.div
-      whileHover={{ y: -6, boxShadow: "0 20px 40px -20px rgba(255,85,0,0.25)" }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
-      className="rounded-2xl border border-line bg-white transition-colors hover:border-orange/40 shadow-sm group h-full"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className={`rounded-[28px] bg-white ${shadowClass} transition-all duration-300 ease-out group h-full`}
     >
       {cardContent}
     </motion.div>

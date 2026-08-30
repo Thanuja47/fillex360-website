@@ -22,6 +22,9 @@ export default function WorkPage() {
     show: { opacity: 1, scale: 1, transition: { duration: 0.25 } },
   };
 
+  const appleShadow =
+    "shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.06),0_24px_48px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.05),0_16px_32px_rgba(0,0,0,0.09),0_32px_64px_rgba(0,0,0,0.07)]";
+
   return (
     <div className={`py-16 md:py-24 bg-background ${fontClass}`}>
       <div className="max-w-7xl mx-auto px-6">
@@ -44,9 +47,9 @@ export default function WorkPage() {
             <Reveal key={project.id} delay={i * 0.1}>
               <motion.div
                 id={project.id}
-                whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 20px 40px -20px rgba(255,85,0,0.25)" }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="bg-white border border-line rounded-3xl p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-28 hover:border-orange/40 transition-colors group"
+                whileHover={shouldReduceMotion ? undefined : { y: -6 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className={`bg-white rounded-[28px] p-8 sm:p-12 ${appleShadow} grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-28 transition-all duration-300 ease-out group`}
               >
                 <div className="lg:col-span-7 space-y-6">
                   <div className="flex items-center gap-3 flex-wrap">

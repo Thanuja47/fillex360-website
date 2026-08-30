@@ -86,7 +86,7 @@ export default function ProjectGrid() {
                 <ProjectCard project={project} />
               </div>
             ))}
-            <div className="bg-dark text-white border border-dark-border rounded-2xl shadow-xl">
+            <div className="bg-dark text-white border border-dark-border rounded-[28px] shadow-xl">
               {yoursCardContent}
             </div>
           </div>
@@ -107,9 +107,9 @@ export default function ProjectGrid() {
             {/* 4th CTA Card: "Yours?" */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ y: -6, boxShadow: "0 20px 40px -20px rgba(255,85,0,0.25)" }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-dark text-white border border-dark-border rounded-2xl relative overflow-hidden shadow-xl transition-colors hover:border-orange/40 h-full"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-dark text-white border border-dark-border rounded-[28px] relative overflow-hidden shadow-xl transition-all duration-300 ease-out hover:border-orange/40 h-full"
             >
               {yoursCardContent}
             </motion.div>
