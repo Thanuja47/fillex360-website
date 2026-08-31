@@ -3,7 +3,7 @@
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { MapPin, Mail } from "lucide-react";
+import { MapPin, Mail, Phone } from "lucide-react";
 
 export default function ContactPage() {
   const { t, fontClass } = useLanguage();
@@ -51,10 +51,27 @@ export default function ContactPage() {
               </div>
               <div className="pt-2">
                 <strong className="text-white block mb-1 inline-flex items-center gap-1.5">
+                  <Phone size={16} className="text-orange shrink-0" />
+                  Phone / WhatsApp:
+                </strong>
+                <a
+                  href="tel:+94762346355"
+                  className="pl-5 font-mono text-white hover:text-orange transition-colors"
+                >
+                  +94 762 346 355
+                </a>
+              </div>
+              <div className="pt-2">
+                <strong className="text-white block mb-1 inline-flex items-center gap-1.5">
                   <Mail size={16} className="text-orange shrink-0" />
                   Direct Inquiries:
                 </strong>
-                <p className="pl-5 font-mono text-white">fillex360solutions@gmail.com</p>
+                <a
+                  href="mailto:fillex360solutions@gmail.com"
+                  className="pl-5 font-mono text-white hover:text-orange transition-colors"
+                >
+                  fillex360solutions@gmail.com
+                </a>
               </div>
             </div>
           </Reveal>

@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "+94770000000";
+  const phoneNumber = "94762346355"; // wa.me requires digits only, no + prefix
   const defaultMessage = encodeURIComponent(
     "Hi Fillex360 Solutions! I visited your website and would like to discuss a software project for my business."
   );
