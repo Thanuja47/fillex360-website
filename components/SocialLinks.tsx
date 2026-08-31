@@ -1,13 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTiktok } from "react-icons/fa6";
+import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa6";
 
 const socials = [
   { icon: FaInstagram, href: "https://instagram.com/fillex360", label: "Instagram", color: "#E1306C" },
-  { icon: FaFacebookF, href: "https://facebook.com/fillex360", label: "Facebook", color: "#1877F2" },
-  { icon: FaLinkedinIn, href: "https://linkedin.com/company/fillex360", label: "LinkedIn", color: "#0A66C2" },
-  { icon: FaTiktok, href: "https://tiktok.com/@fillex360", label: "TikTok", color: "#000000" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/share/1DLjWHttGt/?mibextid=wwXIfr", label: "Facebook", color: "#1877F2" },
+  { icon: FaTiktok, href: "https://www.tiktok.com/@fillex360?_r=1&_t=ZS-99K6XlOpLgv", label: "TikTok", color: "#000000" },
 ];
 
 const containerVariants = {
