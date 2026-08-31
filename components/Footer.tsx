@@ -62,6 +62,9 @@ export default function Footer() {
               <p className="text-xs text-slate-500 pt-2 font-mono">
                 Direct Email: <a href="mailto:fillex360solutions@gmail.com" className="text-white underline hover:text-orange transition-colors">fillex360solutions@gmail.com</a>
               </p>
+              <p className="text-xs text-slate-500 font-mono">
+                WhatsApp / Phone: <a href="tel:+94762346355" className="text-white underline hover:text-orange transition-colors">+94 762 346 355</a>
+              </p>
             </div>
           </div>
         </div>
