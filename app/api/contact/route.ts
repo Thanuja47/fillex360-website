@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || "hello@fillex360.com";
+    const toEmail = process.env.CONTACT_TO_EMAIL || "fillex360solutions@gmail.com";
 
     // If API key is present, send email via Resend
     if (process.env.RESEND_API_KEY) {

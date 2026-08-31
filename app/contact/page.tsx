@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <div className={`py-16 md:py-24 bg-dark text-white min-h-[85vh] flex items-center relative overflow-hidden ${fontClass}`}>
       {/* Ambient background drift glow */}
-      <div className="absolute -z-10 top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-orange/10 blur-[100px] animate-[drift_8s_ease-in-out_infinite]" />
+      <div className="absolute -z-10 top-1/4 right-1/4 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] max-w-full rounded-full bg-orange/10 blur-[100px] animate-[drift_8s_ease-in-out_infinite] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
         {/* Left Side */}
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <Mail size={16} className="text-orange shrink-0" />
                   Direct Inquiries:
                 </strong>
-                <p className="pl-5 font-mono text-white">hello@fillex360.com</p>
+                <p className="pl-5 font-mono text-white">fillex360solutions@gmail.com</p>
               </div>
             </div>
           </Reveal>

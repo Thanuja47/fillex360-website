@@ -60,7 +60,7 @@ export default function Footer() {
               <p><strong className="text-white font-bold">Galle Studio:</strong> Fort District, Galle 80000, Sri Lanka</p>
               <p><strong className="text-white font-bold">Colombo Hub:</strong> Colombo 03, Western Province, Sri Lanka</p>
               <p className="text-xs text-slate-500 pt-2 font-mono">
-                Direct Email: <a href="mailto:hello@fillex360.com" className="text-white underline hover:text-orange transition-colors">hello@fillex360.com</a>
+                Direct Email: <a href="mailto:fillex360solutions@gmail.com" className="text-white underline hover:text-orange transition-colors">fillex360solutions@gmail.com</a>
               </p>
             </div>
           </div>
