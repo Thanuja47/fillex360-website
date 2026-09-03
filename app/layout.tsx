@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   title: "Fillex360 Solutions — Software, built properly.",
   description:
     "A software studio in Galle & Colombo, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
-  metadataBase: new URL("https://fillex360.lk"),
+  metadataBase: new URL("https://www.fillex360.com"),
   alternates: {
-    canonical: "https://fillex360.lk",
+    canonical: "https://www.fillex360.com",
   },
   icons: {
     icon: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Fillex360 Solutions — Software, built properly.",
     description:
       "A software studio in Galle & Colombo, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
-    url: "https://fillex360.lk",
+    url: "https://www.fillex360.com",
     siteName: "Fillex360 Solutions",
     images: [
       {
