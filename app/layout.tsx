@@ -30,13 +30,24 @@ const notoSinhala = Noto_Sans_Sinhala({
 export const metadata: Metadata = {
   title: "Fillex360 Solutions — Software, built properly.",
   description:
-    "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
-  metadataBase: new URL("https://fillex360.com"),
+    "A software studio in Galle & Colombo, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+  metadataBase: new URL("https://fillex360.lk"),
+  alternates: {
+    canonical: "https://fillex360.lk",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Fillex360 Solutions — Software, built properly.",
     description:
-      "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
-    url: "https://fillex360.com",
+      "A software studio in Galle & Colombo, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+    url: "https://fillex360.lk",
     siteName: "Fillex360 Solutions",
     images: [
       {
@@ -53,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fillex360 Solutions — Software, built properly.",
     description:
-      "A software studio in Colombo & Galle, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
+      "A software studio in Galle & Colombo, Sri Lanka building production systems for education, healthcare, and maritime businesses.",
     images: ["/og-image.png"],
   },
 };
